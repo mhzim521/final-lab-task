@@ -1,0 +1,30 @@
+touch nano flr
+chmod +x flr.sh
+./flr.sh
+nano finallabreport.sh
+chmod +x finallabreport.sh
+./ finallabreport.sh
+
+
+#!/bin/bash
+
+echo "Enter starting year:"
+read s
+
+echo "Enter ending year:"
+read e
+
+c=0
+
+for ((y=s; y<=e; y++))
+do
+  if (( (y % 4 == 0 && y % 100 != 0) || y % 400 == 0 ))
+  then
+    echo $y
+    c=$((c + 1))
+  fi
+done
+
+echo "Total leap years: $c"
+
+
