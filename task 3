@@ -1,0 +1,51 @@
+touch flr
+nano flr
+chmod +x flr.sh
+
+#!/bin/bash
+
+# Initialize counters
+pass=0
+fail=0
+
+echo "Enter Student ID: "
+read sid
+
+echo "Enter marks of 3 subjects (space separated): "
+read m1 m2 m3
+
+# Calculate total and percentage
+total=$((m1 + m2 + m3))
+percent=$((total * 100 / 300))
+
+# Determine Grade and Result status
+if [ $percent -ge 80 ]; then
+    grade="A"
+    result="Pass"
+    pass=$((pass + 1))
+elif [ $percent -ge 60 ]; then
+    grade="B"
+    result="Pass"
+    pass=$((pass + 1))
+elif [ $percent -ge 40 ]; then
+    grade="F"
+    result="Fail"
+    fail=$((fail + 1))
+else
+    # Default case for marks below 40
+    grade="F"
+    result="Fail"
+    fail=$((fail + 1))
+fi
+
+echo "---------------------------"
+echo "Student ID: $sid"
+echo "Total Marks: $total"
+echo "Percentage: $percent"
+echo "Grade: $grade"
+echo "Result: $result"
+echo "---------------------------"
+echo "Pass Students: $pass"
+echo "Fail Students: $fail"
+
+
